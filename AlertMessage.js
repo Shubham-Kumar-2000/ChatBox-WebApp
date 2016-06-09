@@ -30,3 +30,13 @@ $(document).ready(function() {
     } //end function validateForm
 
 });
+
+function validateForm() {
+
+    var errorFields = new Array();
+
+    return errorFields;
+
+} //end function validateForm
+
+});
