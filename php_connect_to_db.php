@@ -18,7 +18,7 @@ if ($conn->connect_error) {
     echo "Not success";
 }else{
 
-//    echo "connect success" . "<br>";
+   echo "connect success" . "<br>";
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     if (mysqli_query($conn,"INSERT INTO `Users` (`UserName`) VALUES ('$name')")) {
         $userId = mysqli_insert_id();
