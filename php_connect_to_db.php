@@ -6,12 +6,12 @@
  * Time: 09:26
  */
 // php connect to mysql database
-$dbserver = "test.koszewa-it.de"; // server name
-$dbuser = "tester"; //username of server
-$dbpassword = "Xwtu4%24"; //server password
-$dbname = "test_koszewa_it_de"; // database name
 
-$conn =  new mysqli($dbserver, $dbuser, $dbpassword, $dbname);
+$dbuser = "root"; //username of server
+$dbpassword = " "; //server password
+$dbname = "testingdb"; // database name
+
+$conn =  new mysqli('localhost', $dbuser, $dbpassword, $dbname);
 // check connection
 if ($conn->connect_error) {
       die ("Connection failed: " . $conn->connect_error);
