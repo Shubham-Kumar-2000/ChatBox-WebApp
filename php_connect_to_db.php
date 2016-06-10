@@ -7,9 +7,9 @@
  */
 // php connect to mysql database
 
-$dbuser = "root"; //username of server
-$dbpassword = " "; //server password
-$dbname = "testingdb"; // database name
+$dbuser = 'root'; //username of server
+$dbpassword = ' '; //server password
+$dbname = 'testingdb'; // database name
 
 $conn =  new mysqli('localhost', $dbuser, $dbpassword, $dbname);
 // check connection
