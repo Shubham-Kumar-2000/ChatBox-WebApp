@@ -25,19 +25,36 @@ if ($conn->connect_error) {
         echo "successfully inserted";
     }
     else {
-        echo "failed". mysqli_error($conn);
+        echo "my false". mysqli_error($conn);
     }
 
-
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $timestamp = date('Y-m-d H:i:s');
+    $theUserId = "SELECT User_Id FROM Users where UserName = '".$name."'";
+    $result2 = $conn->query($theUserId);
+    if ($result2->num_rows> 0) {
+    	while($rows = $result2->fetch_assoc()){
+    
+    		$userId = $rows['User_Id'];
+    
+    	}}
+    	if (mysqli_query($conn,"INSERT INTO `Messages` (`UserId`, `Usermsgs`, `times`) VALUES ('$userId','$message','$timestamp' )")) {
+    		echo "successfully inserted";
+    	}
+    	else {
+    		echo "failed". mysqli_error($conn);
+    	}
+    
     $collect_data = "SELECT U.UserName,M.Usermsgs,M.times FROM Users as U join Messages as M where U.User_Id=M.UserId";
     $result = $conn->query($collect_data);
     if ($result->num_rows> 0) {
         while($rows = $result->fetch_assoc()){
 
-
+//if xreiazomai edw?
            echo "User:". $rows["UserName"]. "--> ";
            echo $rows["Usermsgs"]. " ";
            echo $rows["times"]. " " . "<br>";
+           
 //            $testing = $rows;
 
         }
@@ -47,7 +64,9 @@ if ($conn->connect_error) {
 //        }
     }
 
-
+    
+    $conn->close();
+    
 
     
 //}
@@ -68,16 +87,6 @@ if ($conn->connect_error) {
 //    echo "0 results";
 }
 
-$message = mysqli_real_escape_string($conn, $_POST['message']);
-$timestamp = date('Y-m-d H:i:s');
-if (mysqli_query($conn,"INSERT INTO `Messages` (`UserId`,`Usermsgs`, `times`) VALUES ('$userId','$message','$timestamp' )")) {
-    echo "successfully inserted";
-}
-else {
-    echo "failed". mysqli_error($conn);
-}
-
-$conn->close();
 
 
 
@@ -102,7 +111,4 @@ $conn->close();
 //times TIMESTAMP
 //)
 //?>
-
-
-
 
